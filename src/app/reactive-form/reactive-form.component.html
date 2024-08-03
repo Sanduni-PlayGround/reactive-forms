@@ -1,0 +1,53 @@
+<h3 class="mb-3">Customer Details</h3>
+<form [formGroup]="frm">
+  <div class="mb-3 px-1">
+    <label for="txt-id" class="form-label">Customer ID</label>
+    <input formControlName="id"
+           [class] = "getCSSClasses(id)"
+           id="txt-id" type="text" class="form-control"
+           placeholder="Eg. C001">
+    <small class="invalid-feedback">
+      @if(id.hasError('pattern')){
+        Invalid customer id
+      } @else {
+        Customer Id can't be empty
+      }
+    </small>
+
+  </div>
+  <div class="mb-3 px-1">
+    <label for="txt-name" class="form-label">Customer Name</label>
+    <input formControlName="name"
+           [class] = "getCSSClasses(name)"
+           id="txt-name" type="text" class="form-control"
+           placeholder="Eg. Kasun Sampath">
+    <small class="invalid-feedback">
+      @if(name.hasError('pattern')){
+        Invalid customer id
+      } @else if (frm.get('name')?.hasError('length')){
+        Customer name should be at least 3 character long
+      } @else {
+        Customer name cannot be empty
+      }
+    </small>
+  </div>
+  <div class="mb-3 px-1">
+    <label for="txt-contact" class="form-label">Customer Contact</label>
+    <input formControlName="contact"
+           [class] = "getCSSClasses(contact)"
+           id="txt-contact" type="text" class="form-control"
+           placeholder="Eg. 011-1234567">
+    <small class="invalid-feedback">
+      @if(contact.hasError('pattern')){
+        Invalid contact
+      } @else {
+        Contact cannot be empty
+      }
+    </small>
+  </div>
+  <div class="d-flex gap-1">
+    <button class="btn btn-primary">Save</button>
+    <button class="btn btn-warning">Clear</button>
+  </div>
+
+</form>

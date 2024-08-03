@@ -1,0 +1,26 @@
+<form class="text-center" [formGroup]="frm">
+  <div formArrayName = "values">
+    @for (control of values.controls; track $index){
+      <div class="mb-3 d-flex gap-2 align-items-center">
+        <label for="txt-value-{{$index}}" class="form-label flex-shrink-0">
+          Value {{$index + 1}}
+        </label>
+        <input [formControlName]="$index"
+                type="text" id="txt-value-{{$index}}"
+               class="form-control"
+               placeholder="Enter tha value 1">
+        @if ($first){
+          <button (click)="addNewControl()" class="btn btn-success">+</button>
+        } @else {
+          <button (click)="values.removeAt($index)" class="btn btn-success">-</button>
+        }
+
+      </div>
+    }
+
+    <button class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+
+

@@ -1,0 +1,19 @@
+<h1 class="text-center p-2">Reactive Forms</h1>
+<div class="d-flex p-2 gap-1">
+  <input [formControl]="myInputControl"
+         class="form-control"
+         placeholder="Enter something here"
+         type="text">
+  <button class="btn btn-primary" (click)="validate()">Validate</button>
+</div>
+<small class="px-3 py-1">
+  <strong>Entered: </strong> {{myInputControl.value}}
+</small>
+<hr>
+<div class="p-2">
+  <app-reactive-form />
+</div>
+<hr>
+<div class="p-2">
+  <app-dan-amarui />
+</div>
